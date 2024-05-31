@@ -5,9 +5,9 @@ import seaborn as sns
 
 fandango = pd.read_csv("fandango_scrape.csv")
 
-# plt.figure(figsize=(12, 5))
-# sns.scatterplot(data=fandango, x='RATING', y='VOTES')         # graph raiting vs votes
-# plt.show()
+plt.figure(figsize=(12, 5))
+sns.scatterplot(data=fandango, x='RATING', y='VOTES')         # graph raiting vs votes
+plt.show()
 
 fandango['YEAR'] = fandango['FILM'].apply(
     lambda title: title.split('(')[-1][:-1])            # creating year column from film
@@ -52,7 +52,7 @@ rotten_diff_mean = round(abs(all_sites['Rotten_Diff']).mean(), 2)
 # print(rotten_diff_mean)
 
 # plt.figure(figsize=(12, 5))
-# sns.histplot(data=all_sites, x= 'Rotten_diff', kde=True, bins=25)          # graph difference between rotten tomatoes vs rotten tomatoes users
+# sns.histplot(data=all_sites, x= 'Rotten_Diff', kde=True, bins=25)          # graph difference between rotten tomatoes vs rotten tomatoes users
 # plt.xlim(-70, 50)
 # plt.tight_layout()
 # plt.show()
@@ -81,7 +81,7 @@ rotten_diff_mean = round(abs(all_sites['Rotten_Diff']).mean(), 2)
 # plt.tight_layout()
 # plt.show()
 
-# highest_IMDB = all_sites.nlargest(1, 'IMDB_user_vote_count')            # fil with highest IMDB votes 
+# highest_IMDB = all_sites.nlargest(1, 'IMDB_user_vote_count')            # film with highest IMDB votes 
 # print(highest_IMDB)
 
 # highest_Metacritic = all_sites.nlargest(1, 'Metacritic_user_vote_count')            # film with highest Metacritic votes
@@ -130,7 +130,7 @@ def move_legend(ax, new_loc, **kws):
 # plt.show()
 
 lowest_rt = norm_scores.nsmallest(10, 'RottenTomatoes_norm')            # film with lowest Rotten Tomatoes normalized rating
-print(lowest_rt)
+# print(lowest_rt)
 
 # fig, ax = plt.subplots(figsize=(12,4),dpi=100)
 # sns.kdeplot(data=lowest_rt, clip=[0,5], palette='Set1', ax=ax, fill=True)            # graph lowest Rotten Tomatoes normalized rating vs others
